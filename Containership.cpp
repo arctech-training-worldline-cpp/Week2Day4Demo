@@ -1,14 +1,14 @@
 #include <iostream>
-
 using namespace std;
 
 class Alpha
 {
-    int x;
-    public :
+    private:
+        int x;
+    public:
         Alpha(int xVal)
         {
-            x= xVal;
+            x = xVal;
             cout << "Alpha constructor called " << endl;
         }
         int GetX()
@@ -19,7 +19,8 @@ class Alpha
 
 class Beta
 {
-    int y;
+    private:
+        int y;
     public:
         Beta(int yVal)
         {
@@ -34,30 +35,35 @@ class Beta
 
 class Gamma
 {
-    Alpha a;
-    Beta b;
-    int c, d;
-    public :
+    public : 
+        Alpha a;
+        Beta b;
+        int c , d;
+    public:
         Gamma(int aVal, int bVal, int cVal, int dVal) : c(cVal), d(dVal), a(aVal), b(bVal)
         {
-            cout << "Gamma constructor called " << endl;
+            cout << "Gamma constructor called" << endl;
         }
 };
 
-class GammaInh : public Alpha, public Beta{
-    int c, d;
+class GammaInh : public Alpha, public Beta
+{
+    int c ,d;
     public:
         GammaInh(int aVal, int bVal, int cVal, int dVal) : c(cVal), d(dVal), Alpha(aVal), Beta(bVal)
         {
-            cout << "Gamma constructor called " << endl;
+            cout << "Gamma Inheritance constructor called" << endl;
         }
 };
 
-int main7777()
+int main()
 {
     Gamma g(1,2,3,4);
-    GammaInh g1(5,6,7,8);
-
+    g.a.GetX();
     
+    cout << endl << "------------------------" << endl;
+    GammaInh g1(5,6,7,8);
+    g1.GetX();
+
     return 0;
 }
